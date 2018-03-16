@@ -1,0 +1,538 @@
+{
+  "contractName": "Order",
+  "abi": [],
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820c2af81adac87a1433aac6041a8972b8655d435a95bc5630b8d8253839e2652e50029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820c2af81adac87a1433aac6041a8972b8655d435a95bc5630b8d8253839e2652e50029",
+  "sourceMap": "28:892:3:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "28:892:3:-;;;;;",
+  "source": "pragma solidity ^0.4.18;\r\n\r\ncontract Order{\r\n    // 订单状态\r\n    enum orderstatus {create, success, fail, settle, prize}\r\n    // 每期开奖状态\r\n    enum issueState {init, settle}\r\n    // 投注开关\r\n    enum switchState {on, off}\r\n\r\n    mapping (string => uint8[]) winNumbersPerIssue;\r\n    address internal owner;\r\n    // 单个订单结构\r\n    struct order {\r\n        uint8 orderstatus;  //订单状态\r\n        uint8[] betnums;   //投注号码\r\n        uint8 times;   //投注倍数\r\n        uint256 coins;  //投注代币金额\r\n        uint256 prizes; //中奖金额\r\n        address sender; // 投注地址\r\n    }\r\n\r\n    /* uint8 private totalnumber = 5;\r\n    uint256 private betcoins = 1*10**14;\r\n    uint8 private Switch = uint8(switchState.on); */\r\n\r\n    // 订单格式(期号=>订单列表)\r\n    mapping (string => order[]) internal orders;\r\n    mapping (string => uint8) internal issueStates;\r\n}\r\n",
+  "sourcePath": "F:\\betchain\\contracts\\Order.sol",
+  "ast": {
+    "attributes": {
+      "absolutePath": "/F/betchain/contracts/Order.sol",
+      "exportedSymbols": {
+        "Order": [
+          591
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.4",
+            ".18"
+          ]
+        },
+        "id": 548,
+        "name": "PragmaDirective",
+        "src": "0:24:3"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            591
+          ],
+          "name": "Order",
+          "scope": 592
+        },
+        "children": [
+          {
+            "attributes": {
+              "canonicalName": "Order.orderstatus",
+              "name": "orderstatus"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "create"
+                },
+                "id": 549,
+                "name": "EnumValue",
+                "src": "88:6:3"
+              },
+              {
+                "attributes": {
+                  "name": "success"
+                },
+                "id": 550,
+                "name": "EnumValue",
+                "src": "96:7:3"
+              },
+              {
+                "attributes": {
+                  "name": "fail"
+                },
+                "id": 551,
+                "name": "EnumValue",
+                "src": "105:4:3"
+              },
+              {
+                "attributes": {
+                  "name": "settle"
+                },
+                "id": 552,
+                "name": "EnumValue",
+                "src": "111:6:3"
+              },
+              {
+                "attributes": {
+                  "name": "prize"
+                },
+                "id": 553,
+                "name": "EnumValue",
+                "src": "119:5:3"
+              }
+            ],
+            "id": 554,
+            "name": "EnumDefinition",
+            "src": "70:55:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Order.issueState",
+              "name": "issueState"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "init"
+                },
+                "id": 555,
+                "name": "EnumValue",
+                "src": "175:4:3"
+              },
+              {
+                "attributes": {
+                  "name": "settle"
+                },
+                "id": 556,
+                "name": "EnumValue",
+                "src": "181:6:3"
+              }
+            ],
+            "id": 557,
+            "name": "EnumDefinition",
+            "src": "158:30:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Order.switchState",
+              "name": "switchState"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "on"
+                },
+                "id": 558,
+                "name": "EnumValue",
+                "src": "233:2:3"
+              },
+              {
+                "attributes": {
+                  "name": "off"
+                },
+                "id": 559,
+                "name": "EnumValue",
+                "src": "237:3:3"
+              }
+            ],
+            "id": 560,
+            "name": "EnumDefinition",
+            "src": "215:26:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "winNumbersPerIssue",
+              "scope": 591,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(string memory => uint8[] storage ref)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(string memory => uint8[] storage ref)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 561,
+                    "name": "ElementaryTypeName",
+                    "src": "258:6:3"
+                  },
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "uint8[] storage pointer"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 562,
+                        "name": "ElementaryTypeName",
+                        "src": "268:5:3"
+                      }
+                    ],
+                    "id": 563,
+                    "name": "ArrayTypeName",
+                    "src": "268:7:3"
+                  }
+                ],
+                "id": 564,
+                "name": "Mapping",
+                "src": "249:27:3"
+              }
+            ],
+            "id": 565,
+            "name": "VariableDeclaration",
+            "src": "249:46:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "owner",
+              "scope": 591,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "address",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "address",
+                  "type": "address"
+                },
+                "id": 566,
+                "name": "ElementaryTypeName",
+                "src": "302:7:3"
+              }
+            ],
+            "id": 567,
+            "name": "VariableDeclaration",
+            "src": "302:22:3"
+          },
+          {
+            "attributes": {
+              "canonicalName": "Order.order",
+              "name": "order",
+              "scope": 591,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "orderstatus",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint8",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint8",
+                      "type": "uint8"
+                    },
+                    "id": 568,
+                    "name": "ElementaryTypeName",
+                    "src": "382:5:3"
+                  }
+                ],
+                "id": 569,
+                "name": "VariableDeclaration",
+                "src": "382:17:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "betnums",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint8[] storage pointer",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "uint8[] storage pointer"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint8",
+                          "type": "uint8"
+                        },
+                        "id": 570,
+                        "name": "ElementaryTypeName",
+                        "src": "426:5:3"
+                      }
+                    ],
+                    "id": 571,
+                    "name": "ArrayTypeName",
+                    "src": "426:7:3"
+                  }
+                ],
+                "id": 572,
+                "name": "VariableDeclaration",
+                "src": "426:15:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "times",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint8",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint8",
+                      "type": "uint8"
+                    },
+                    "id": 573,
+                    "name": "ElementaryTypeName",
+                    "src": "469:5:3"
+                  }
+                ],
+                "id": 574,
+                "name": "VariableDeclaration",
+                "src": "469:11:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "coins",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 575,
+                    "name": "ElementaryTypeName",
+                    "src": "508:7:3"
+                  }
+                ],
+                "id": 576,
+                "name": "VariableDeclaration",
+                "src": "508:13:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "prizes",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 577,
+                    "name": "ElementaryTypeName",
+                    "src": "554:7:3"
+                  }
+                ],
+                "id": 578,
+                "name": "VariableDeclaration",
+                "src": "554:14:3"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "sender",
+                  "scope": 581,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 579,
+                    "name": "ElementaryTypeName",
+                    "src": "594:7:3"
+                  }
+                ],
+                "id": 580,
+                "name": "VariableDeclaration",
+                "src": "594:14:3"
+              }
+            ],
+            "id": 581,
+            "name": "StructDefinition",
+            "src": "358:274:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "orders",
+              "scope": 591,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(string memory => struct Order.order storage ref[] storage ref)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(string memory => struct Order.order storage ref[] storage ref)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 582,
+                    "name": "ElementaryTypeName",
+                    "src": "829:6:3"
+                  },
+                  {
+                    "attributes": {
+                      "length": null,
+                      "type": "struct Order.order storage ref[] storage pointer"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "order",
+                          "referencedDeclaration": 581,
+                          "type": "struct Order.order storage pointer"
+                        },
+                        "id": 583,
+                        "name": "UserDefinedTypeName",
+                        "src": "839:5:3"
+                      }
+                    ],
+                    "id": 584,
+                    "name": "ArrayTypeName",
+                    "src": "839:7:3"
+                  }
+                ],
+                "id": 585,
+                "name": "Mapping",
+                "src": "820:27:3"
+              }
+            ],
+            "id": 586,
+            "name": "VariableDeclaration",
+            "src": "820:43:3"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "name": "issueStates",
+              "scope": 591,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "mapping(string memory => uint8)",
+              "value": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "type": "mapping(string memory => uint8)"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "string",
+                      "type": "string storage pointer"
+                    },
+                    "id": 587,
+                    "name": "ElementaryTypeName",
+                    "src": "879:6:3"
+                  },
+                  {
+                    "attributes": {
+                      "name": "uint8",
+                      "type": "uint8"
+                    },
+                    "id": 588,
+                    "name": "ElementaryTypeName",
+                    "src": "889:5:3"
+                  }
+                ],
+                "id": 589,
+                "name": "Mapping",
+                "src": "870:25:3"
+              }
+            ],
+            "id": 590,
+            "name": "VariableDeclaration",
+            "src": "870:46:3"
+          }
+        ],
+        "id": 591,
+        "name": "ContractDefinition",
+        "src": "28:892:3"
+      }
+    ],
+    "id": 592,
+    "name": "SourceUnit",
+    "src": "0:922:3"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.18+commit.9cf6e910.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "1.0.1",
+  "updatedAt": "2018-03-16T01:26:45.468Z"
+}
